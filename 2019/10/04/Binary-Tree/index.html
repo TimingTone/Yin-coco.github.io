@@ -40,8 +40,7 @@
 <blockquote>
 <p>In every single tree, the number of all edges equals to the whole degrees of all the nodes. At the same time, it equals the number of nodes minus 1. </p>
 </blockquote>
-<p><strong><script type="math/tex">e = \sum_{r\in{N}} degree(r) = n - 1 = \Theta(n)</script></strong></p>
-<p>The $r_i$ is called sibling by each other. We will give all the children of one node a serial number to make them hace a order in this sense. All the trees that have been defined specific order in the siblings also are called <code>ordered tree</code>.</p>
+<script type="math/tex; mode=display">**{e = \sum_{r\in{N}} degree(r) = n - 1 = \Theta(n)}**</script><p>The $r_i$ is called sibling by each other. We will give all the children of one node a serial number to make them hace a order in this sense. All the trees that have been defined specific order in the siblings also are called <code>ordered tree</code>.</p>
 <h2 id="Representation-of-the-Tree"><a href="#Representation-of-the-Tree" class="headerlink" title="Representation of the Tree"></a>Representation of the Tree</h2><p>Let’s discuss how to express a tree logically in a computer</p>
 <h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><div class="table-container">
 <table>
@@ -98,12 +97,10 @@
 <p><img alt data-src="/img/RL-subtree.png" class="lozad"></p>
 <p>Please note that here we have actually implied the orderliness of the tree. In general, our habit is to think that the left is first and the right is behind.</p>
 <p>What’s interesting, however, is that we’ll soon see that the binary tree is sufficient to decribe all the trees under the premise that the roots and orderliness can be guaranteed.</p>
-<p><strong><script type="math/tex">n_{depth=k} <=  2^k</script></strong> </p>
-<blockquote>
+<script type="math/tex; mode=display">**{n_{depth=k} <=  2^k}**</script><blockquote>
 <p>The k-th equivalence class, that is, all nodes with depth K, will not exceed 2 to the power of k. </p>
 </blockquote>
-<p><strong><script type="math/tex">h < n < 2^{h+1}</script></strong> </p>
-<blockquote>
+<script type="math/tex; mode=display">**{h < n < 2^{h+1}}**</script><blockquote>
 <p>The overall size of the entire tree meets such as an upper bound, that is, twice as much as the last level of the last equivalence class. Because for a tree with the height of h, there is at least one node per layer. If this is the case, the tree will be retrograded into a single chain consisting of one node at each level.</p>
 </blockquote>
 <p>Conversely, except for leaf nodes, if all nodes have a degree of 2, then equivalence class will reach its maximum saturation, thus constituting a special tree, known as <code>full tree</code>.</p>
