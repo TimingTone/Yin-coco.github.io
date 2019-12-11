@@ -1,26 +1,475 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>String | Yin-coco</title><meta name="description" content="String"><meta name="keywords" content="Algorithms,DS"><meta name="author" content="Yin-coco"><meta name="copyright" content="Yin-coco"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/yin.png"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="canonical" href="http://yoursite.com/2019/10/05/String/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="String"><meta name="twitter:description" content="String"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"><meta property="og:type" content="article"><meta property="og:title" content="String"><meta property="og:url" content="http://yoursite.com/2019/10/05/String/"><meta property="og:site_name" content="Yin-coco"><meta property="og:description" content="String"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="prev" title="送东阳马生序" href="http://yoursite.com/2019/10/06/送东阳马生序/"><link rel="next" title="舟夜书所见" href="http://yoursite.com/2019/10/05/月夜书所见/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  highlight_copy: 'true',
-  highlight_lang: 'true',
-  highlight_shrink: 'false',
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  bookmark: {
-    title: 'Bookmark',
-    message_prev: 'Press',
-    message_next: 'to bookmark this page'
-  },
-  runtime_unit: 'days',
-  copyright: {"languages":{"author":"Author: Yin-coco","link":"Link: http://yoursite.com/2019/10/05/String/","source":"Source: Yin-coco","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
-  copy_copyright_js: true
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-}</script></head><body><div id="header"> <div id="page-header"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Yin-coco</a></span><i class="fa fa-bars fa-fw toggle-menu pull-right close" aria-hidden="true"></i><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><script>document.body.addEventListener('touchstart', function(){ });</script></div></span><span class="pull-right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lozad avatar_img" src="http://upload.art.ifeng.com/2018/0403/1522726422907.jpg" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is_center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is_center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">7</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><script>document.body.addEventListener('touchstart', function(){ });</script></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">Catalog</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#ADT"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">ADT</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Definition"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">Definition</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Terminology"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">Terminology</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Function-Interfaces"><span class="toc_mobile_items-number">1.3.</span> <span class="toc_mobile_items-text">Function Interfaces</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#String-Matching"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">String Matching</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Grep"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">Grep</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Pattern-matching"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">Pattern matching</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Algorithm-Evaluation"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">Algorithm Evaluation</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#Brute-Force-Match"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">Brute Force Match</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Conception"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">Conception</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Implementation"><span class="toc_mobile_items-number">3.2.</span> <span class="toc_mobile_items-text">Implementation</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Version-one"><span class="toc_mobile_items-number">3.2.1.</span> <span class="toc_mobile_items-text">Version one</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Version-Two"><span class="toc_mobile_items-number">3.2.2.</span> <span class="toc_mobile_items-text">Version Two</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#KMP-Algorithm"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">KMP Algorithm</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#From-memory-to-predictive-power"><span class="toc_mobile_items-number">4.1.</span> <span class="toc_mobile_items-text">From memory to predictive power</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Query-Table"><span class="toc_mobile_items-number">4.2.</span> <span class="toc_mobile_items-text">Query Table</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Instance"><span class="toc_mobile_items-number">4.3.</span> <span class="toc_mobile_items-text">Instance</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Understanding-of-next-table"><span class="toc_mobile_items-number">4.4.</span> <span class="toc_mobile_items-text">Understanding of next[] table</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Implementation-of-KMP"><span class="toc_mobile_items-number">4.5.</span> <span class="toc_mobile_items-text">Implementation of KMP</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#Conclusion"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">Conclusion</span></a></li></ol></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADT"><span class="toc-number">1.</span> <span class="toc-text">ADT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition"><span class="toc-number">1.1.</span> <span class="toc-text">Definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Terminology"><span class="toc-number">1.2.</span> <span class="toc-text">Terminology</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function-Interfaces"><span class="toc-number">1.3.</span> <span class="toc-text">Function Interfaces</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-Matching"><span class="toc-number">2.</span> <span class="toc-text">String Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grep"><span class="toc-number">2.1.</span> <span class="toc-text">Grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pattern-matching"><span class="toc-number">2.2.</span> <span class="toc-text">Pattern matching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm-Evaluation"><span class="toc-number">2.3.</span> <span class="toc-text">Algorithm Evaluation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brute-Force-Match"><span class="toc-number">3.</span> <span class="toc-text">Brute Force Match</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Conception"><span class="toc-number">3.1.</span> <span class="toc-text">Conception</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation"><span class="toc-number">3.2.</span> <span class="toc-text">Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Version-one"><span class="toc-number">3.2.1.</span> <span class="toc-text">Version one</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Version-Two"><span class="toc-number">3.2.2.</span> <span class="toc-text">Version Two</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KMP-Algorithm"><span class="toc-number">4.</span> <span class="toc-text">KMP Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#From-memory-to-predictive-power"><span class="toc-number">4.1.</span> <span class="toc-text">From memory to predictive power</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Query-Table"><span class="toc-number">4.2.</span> <span class="toc-text">Query Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instance"><span class="toc-number">4.3.</span> <span class="toc-text">Instance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Understanding-of-next-table"><span class="toc-number">4.4.</span> <span class="toc-text">Understanding of next[] table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation-of-KMP"><span class="toc-number">4.5.</span> <span class="toc-text">Implementation of KMP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png)"><div id="post-info"><div id="post-title"><div class="posttitle">String</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2019-10-05<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> Updated 2019-10-06</time><span class="post-meta__separator mobile_hidden">|</span><span class="mobile_hidden"><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Data-structures/">Data structures</a></span><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">404</span><span class="post-meta__separator">|</span><span>Reading time: 2 min</span><span class="post-meta__separator">|</span><span>Post View: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><p>From the perspective of abstract data types or specific implementation, String is more simple than the data structures I previously described. So we can spend more time for discussion of related algorithms, especially the string matching algorithm. </p>
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithms,DS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="From the perspective of abstract data types or specific implementation, String is more simple than the data structures I previously described. So we can spend more time for discussion of related algor">
+<meta name="keywords" content="Algorithms,DS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String">
+<meta property="og:url" content="http://yoursite.com/2019/10/05/String/index.html">
+<meta property="og:site_name" content="Yin-coco">
+<meta property="og:description" content="From the perspective of abstract data types or specific implementation, String is more simple than the data structures I previously described. So we can spend more time for discussion of related algor">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/con.png">
+<meta property="og:image" content="http://yoursite.com/img/mem.png">
+<meta property="og:image" content="http://yoursite.com/img/pre.png">
+<meta property="og:image" content="http://yoursite.com/img/ins1.png">
+<meta property="og:image" content="http://yoursite.com/img/ins2.png">
+<meta property="og:updated_time" content="2019-10-06T09:43:11.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="String">
+<meta name="twitter:description" content="From the perspective of abstract data types or specific implementation, String is more simple than the data structures I previously described. So we can spend more time for discussion of related algor">
+<meta name="twitter:image" content="http://yoursite.com/img/con.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '10/1/2019 12:00:00',
+    onlineAPI: '',
+    site: {
+      title: 'Yin-coco',
+      subtitle: '',
+      author: 'Yin-coco'
+    },
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/favicon.ico',
+      hidden: '/images/failure.ico',
+      show_text: '(/≧▽≦/)咦！又好了！',
+      hide_text: '(●—●)喔哟，崩溃啦！'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/05/String/">
+
+
+
+
+
+  <title>String | Yin-coco</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-lab">
+          <a href="/Labs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br>
+            
+            Lab
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-fri">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br>
+            
+            Fri
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/About/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/header-sagiri.jpg)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            <span>Y</span><span>i</span><span>n</span><span>-</span><span>c</span><span>o</span><span>c</span><span>o</span>
+          </div>
+          <div id="guide" class="guide">
+            <span>Y</span><span>i</span><span>n</span><span>-</span><span>c</span><span>o</span><span>c</span><span>o</span>
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/DIYgod.jpg" alt="Yin-coco">
+    <h2 class="site-master-description" itemprop="description">
+        
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">10月</div>
+			<div class="post-day">05</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Data-structures/" itemprop="url" rel="index">
+          <span itemprop="name">Data structures</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yin-coco">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/DIYgod.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yin-coco">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">String</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T18:22:03+08:00">
+                2019-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-structures/" itemprop="url" rel="index">
+                    <span itemprop="name">Data structures</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>From the perspective of abstract data types or specific implementation, String is more simple than the data structures I previously described. So we can spend more time for discussion of related algorithms, especially the string matching algorithm. </p>
 <p>In the next section, let’s take a look from the perspective of ADT. What functional interfaces should be provided as a class data structure.</p>
 <h2 id="ADT"><a href="#ADT" class="headerlink" title="ADT"></a>ADT</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>In short, the string is a finite sequence consists of a series of characters from a character table. </p>
 <blockquote>
@@ -134,7 +583,7 @@
 <p>In fact a simple and effective approach is to considere success and failures respectively.</p>
 <p>……</p>
 <h2 id="Brute-Force-Match"><a href="#Brute-Force-Match" class="headerlink" title="Brute Force Match"></a>Brute Force Match</h2><h3 id="Conception"><a href="#Conception" class="headerlink" title="Conception"></a>Conception</h3><p>As the name suggests, this kind of algorithm’s thinking and strategy are straightforward, very intuitive and easy to understand. But in turn, the name also implies that its efficiency is very low. However, these algorithms also has its value to exist. They can help you understand the calculation process of string matching. It also provides a starting point and reference for our subsequent improvements.</p>
-<p><img alt data-src="/img/con.png" class="lozad"></p>
+<p><img src="/img/con.png" alt></p>
 <p>The brute-force algorithm we are talking is really straightforward on idea. We find that the so-called successful match must be aligned with respect to a certain position. Such alignment position at best, is no more than the length of the text string that is n. So if you do not mind the cost calculation. We just need to try and check each position one by one. Naturally we can solve the string matching problem.</p>
 <p>The most natural way is just from front to back. With single character spacing, align the mode string with the text string by turns and check. Obviously as long as one pair of characters are mismatched, the whole it is impossible to match completely. So this means that the current location of the alignment can be ruled out. So then we need to try next alignment position.</p>
 <h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>The brute force algorithm above can be implemented in at least two versions. They can be easily derived into more efficient algorithms as follow. So we make a presentation to them here.</p>
@@ -145,9 +594,9 @@
 <h4 id="Version-Two"><a href="#Version-Two" class="headerlink" title="Version Two"></a>Version Two</h4><figure class="highlight c++"><figcaption><span> </span><a href="https://dsa.cs.tsinghua.edu.cn/~deng/ds/src_link/string_pm_bf2/pm_brute2.cpp.htm" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">match</span> <span class="params">( <span class="keyword">char</span>* P, <span class="keyword">char</span>* T )</span> </span>&#123; </span><br><span class="line">	<span class="keyword">size_t</span> n = <span class="built_in">strlen</span> ( T ), i = <span class="number">0</span>; </span><br><span class="line">	<span class="keyword">size_t</span> m = <span class="built_in">strlen</span> ( P ), j; </span><br><span class="line"> 	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n - m + <span class="number">1</span>; i++ ) &#123; </span><br><span class="line">		<span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; m; j++ )</span><br><span class="line">			<span class="keyword">if</span> ( T[i + j] != P[j] ) <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span> ( j &gt;= m ) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="KMP-Algorithm"><a href="#KMP-Algorithm" class="headerlink" title="KMP Algorithm"></a>KMP Algorithm</h2><h3 id="From-memory-to-predictive-power"><a href="#From-memory-to-predictive-power" class="headerlink" title="From memory to predictive power"></a>From memory to predictive power</h3><p>KMP algorithm can ensure that even in the worst case the running time is not more than linear. </p>
 <p>Using principles and methods of such information can be represented by this figure.</p>
-<p><img alt data-src="/img/mem.png" class="lozad"></p>
+<p><img src="/img/mem.png" alt></p>
 <p>We mismatch at T [i] and P [j] for the first time. And in turn, the prefix P [j] corresponding to and the substring T [i] corresponding to match exactly. As long as we take full advantage of such information, we can rule out a lot of alignment positions quickly. So that the pattern string can slide forward quickly and drastically. Also using such information, we even do not have to repeat any comparison before T [i]. That is to say, in the next alignment position of pattern string, the new round can simply start from T [i] and the new P [j].</p>
-<p><img alt data-src="/img/pre.png" class="lozad"></p>
+<p><img src="/img/pre.png" alt></p>
 <p>This is an example.  Relative to the current position of the alignment, Our first round of match fail between E and O. Please note that in this case we do not have to slavishly move the pattern string. It can be bravely moved forward three characters. That is to say the previous two alignment position can be ruled out. The reason is if a position if worthy of alignment, One of its necessary condition is that the corresponding first character should be the same as the first character of the mode string. </p>
 <p>Here we emphasize once again, all information about this substring are all obtained from the previous comparison.</p>
 <p>As long as we are able to take full advantage of such information, We can obtain optimal results in two ways:</p>
@@ -168,8 +617,8 @@
 </blockquote>
 <p>After such a pretreatment, in subsequent rounds of comparison, once P [j] meets a mismatch at a position, we simply get that corresponding item from the look-up table and use it to update the previous j.</p>
 <figure class="highlight c++"><figcaption><span> </span><a href="https://dsa.cs.tsinghua.edu.cn/~deng/ds/src_link/string_pm_kmp/pm_kmp.cpp.htm" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">match</span> <span class="params">( <span class="keyword">char</span>* P, <span class="keyword">char</span>* T )</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* next = buildNext ( P );</span><br><span class="line"> 	<span class="keyword">int</span> n = ( <span class="keyword">int</span> ) <span class="built_in">strlen</span> ( T ), i = <span class="number">0</span>; </span><br><span class="line"> 	<span class="keyword">int</span> m = ( <span class="keyword">int</span> ) <span class="built_in">strlen</span> ( P ), j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> ( j &lt; m  &amp;&amp; i &lt; n )</span><br><span class="line">		<span class="keyword">if</span> ( <span class="number">0</span> &gt; j || T[i] == P[j] )</span><br><span class="line"> 			&#123; i ++;  j ++; &#125; </span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line"> 			j = next[j];</span><br><span class="line">	<span class="keyword">delete</span> [] next;</span><br><span class="line">	<span class="keyword">return</span> i - j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Instance"><a href="#Instance" class="headerlink" title="Instance"></a>Instance</h3><p><img alt data-src="/img/ins1.png" class="lozad"></p>
-<p><img alt data-src="/img/ins2.png" class="lozad"></p>
+<h3 id="Instance"><a href="#Instance" class="headerlink" title="Instance"></a>Instance</h3><p><img src="/img/ins1.png" alt></p>
+<p><img src="/img/ins2.png" alt></p>
 <h3 id="Understanding-of-next-table"><a href="#Understanding-of-next-table" class="headerlink" title="Understanding of next[] table"></a>Understanding of next[] table</h3><script type="math/tex; mode=display">next[j] = \begin{cases}
 0 & j = 1 \\
 Max\{k | 1<k<j \&\& 'p_1...p_{k-1}' = 'p_{j-k+1}...p_{j-1}'\} & {\text{set is not empty}} \\
@@ -199,30 +648,370 @@ Max\{k | 1<k<j \&\& 'p_1...p_{k-1}' = 'p_{j-k+1}...p_{j-1}'\} & {\text{set is no
 <h3 id="Implementation-of-KMP"><a href="#Implementation-of-KMP" class="headerlink" title="Implementation of KMP"></a>Implementation of KMP</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">buildNext</span> <span class="params">( <span class="keyword">char</span>* P )</span> </span>&#123; </span><br><span class="line">	<span class="keyword">size_t</span> m = <span class="built_in">strlen</span> ( P ), j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span>* N = <span class="keyword">new</span> <span class="keyword">int</span>[m];</span><br><span class="line">	<span class="keyword">int</span> t = N[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> ( j &lt; m - <span class="number">1</span> )</span><br><span class="line">		<span class="keyword">if</span> ( <span class="number">0</span> &gt; t || P[j] == P[t] ) &#123;</span><br><span class="line">			j ++; t ++;</span><br><span class="line">			N[j] = t; </span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">			t = N[t];</span><br><span class="line">	<span class="keyword">return</span> N;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buildNext</span><span class="params">(subStr T, <span class="keyword">int</span> next[])</span></span>&#123;</span><br><span class="line">	i=<span class="number">1</span>;	next[<span class="number">1</span>]=<span class="number">0</span>;	j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt; T[<span class="number">0</span>])&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">0</span> || T[i]==T[j])&#123;</span><br><span class="line">			++i;	++j;</span><br><span class="line">			next[i] = j;</span><br><span class="line">		&#125;<span class="keyword">else</span></span><br><span class="line">			j = next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Reference: <a href="http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/courseware/4c294e9ea5b5433d831443e64f64bacb/566a98bd2125422d96fc6378daefcf83/" target="_blank" rel="noopener">http://www.xuetangx.com/courses/course-v1:TsinghuaX+30240184_2X+sp/courseware/4c294e9ea5b5433d831443e64f64bacb/566a98bd2125422d96fc6378daefcf83/</a></p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Yin-coco</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/10/05/String/">http://yoursite.com/2019/10/05/String/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithms/">Algorithms    </a><a class="post-meta__tags" href="/tags/DS/">DS    </a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull-left"><a href="/2019/10/06/送东阳马生序/"><img class="prev_cover lozad" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Previous Post</div><div class="prev_info"><span>送东阳马生序</span></div></a></div><div class="next-post pull-right"><a href="/2019/10/05/月夜书所见/"><img class="next_cover lozad" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>舟夜书所见</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2019/10/03/Binary-Search-Tree/" title="Binary Search Tree"><img class="relatedPosts_cover lozad" data-src="/img/BST.png"><div class="relatedPosts_title">Binary Search Tree</div></a></div><div class="relatedPosts_item"><a href="/2019/10/04/Binary-Tree/" title="Binary Tree"><img class="relatedPosts_cover lozad" data-src="https://www.improgrammer.net/wp-content/uploads/2017/07/Binary-Tree-All-In-One.jpg"><div class="relatedPosts_title">Binary Tree</div></a></div></div><div class="clear_both"></div></div></div></div><footer><div id="footer"><div class="copyright">&copy;1/10/2019 - 2019 By Yin-coco</div><div class="framework-info"><span>Driven </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion">繁</a><i class="nightshift fa fa-moon-o" id="nightshift" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="Scroll to comment"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  CommonHTML: {
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "HTML-CSS": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "SVG": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  }
-});
-</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
-  var all = MathJax.Hub.getAllJax(), i;
-  for (i=0; i < all.length; i += 1) {
-    all[i].SourceElement().parentNode.className += ' has-jax';
-  }
-});
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="/js/nightshift.js"></script><script id="ribbon" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/js/piao.js"></script><script color="0,0,255" opacity="0.7" zindex="-1" count="99" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/js/canvas-nest.js"></script><script src="/js/tw_cn.js"></script><script>translateInitilization()
 
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@1.2.2/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script><script>const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-observer.observe();
-</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body></html>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Yin-coco WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Yin-coco Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+            <a href="/tags/DS/" rel="tag"># DS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/05/月夜书所见/" rel="next" title="舟夜书所见">
+                <i class="fa fa-chevron-left"></i> 舟夜书所见
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/送东阳马生序/" rel="prev" title="送东阳马生序">
+                送东阳马生序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/card.jpg" alt="Yin-coco">
+            
+              <p class="site-author-name" itemprop="name"><span style="opacity:.2;">二向箔</span>DVF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Yin-coco" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Yin-coco" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="/images/qq-g.jpg" target="_blank" title="QQ 群" data-balloon="QQ 群" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/awesomeDIYgod" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.anotherhome.net/3163" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-more"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ADT"><span class="nav-number">1.</span> <span class="nav-text">ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Terminology"><span class="nav-number">1.2.</span> <span class="nav-text">Terminology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-Interfaces"><span class="nav-number">1.3.</span> <span class="nav-text">Function Interfaces</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Matching"><span class="nav-number">2.</span> <span class="nav-text">String Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Grep"><span class="nav-number">2.1.</span> <span class="nav-text">Grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pattern-matching"><span class="nav-number">2.2.</span> <span class="nav-text">Pattern matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm-Evaluation"><span class="nav-number">2.3.</span> <span class="nav-text">Algorithm Evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Brute-Force-Match"><span class="nav-number">3.</span> <span class="nav-text">Brute Force Match</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conception"><span class="nav-number">3.1.</span> <span class="nav-text">Conception</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">3.2.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Version-one"><span class="nav-number">3.2.1.</span> <span class="nav-text">Version one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Version-Two"><span class="nav-number">3.2.2.</span> <span class="nav-text">Version Two</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP-Algorithm"><span class="nav-number">4.</span> <span class="nav-text">KMP Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From-memory-to-predictive-power"><span class="nav-number">4.1.</span> <span class="nav-text">From memory to predictive power</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Query-Table"><span class="nav-number">4.2.</span> <span class="nav-text">Query Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instance"><span class="nav-number">4.3.</span> <span class="nav-text">Instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-of-next-table"><span class="nav-number">4.4.</span> <span class="nav-text">Understanding of next[] table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-of-KMP"><span class="nav-number">4.5.</span> <span class="nav-text">Implementation of KMP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2019</span> Yin-coco.
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">Yin-coco</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
