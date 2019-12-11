@@ -324,7 +324,7 @@
   </div>
 </div>
 <div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-master-avatar" itemprop="image" src="/images/avatar.gif" alt="Yin-coco">
+    <img class="site-master-avatar" itemprop="image" src="/images/M.png" alt="Yin-coco">
     <h2 class="site-master-description" itemprop="description">
         
     </h2>
@@ -381,7 +381,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yin-coco">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/M.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -489,7 +489,9 @@ Be able to compare in size with each other
 Support equal comparison
 
 
-We might as well assume that data items in the entire data set have been uniformly repr
+We might as well assume that data items in the entire data set have been uniformly represented and implemented as a form of Entry.
+We define the following Entry structure:
+12345678910template &lt;typename K, typename V&gt; struct Entry&#123;	K key; V value;	Entry( K k=K(), V v=V()) : key(k), value(v)&#123;&#125;;	Entry( Entry&lt;K, V&gt;const &amp; e) : key(e.key), value(e.value)&#123
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -562,7 +564,7 @@ We might as well assume that data items in the entire data set have been uniform
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yin-coco">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/M.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -651,7 +653,46 @@ We might as well assume that data items in the entire data set have been uniform
         
           
           Tensorflow is a free and open-source software library for dataflow and differentiable programming across a range of tasks.It is a symbolic math library, and is also used for machine learning applications such as neural networks.Firstly,we will build our first neural network and eight strands.
-Tensor,calculation graph,sessionNN based on TENSORFLOW:with tensor to represent data,with calculation graph to build,with session to execute calculation cha
+Tensor,calculation graph,sessionNN based on TENSORFLOW:with tensor to represent data,with calculation graph to build,with session to execute calculation chart,optimize weights(parameters) on the line,and get the model.
+Tensor：Multidimensional Arrays(Lists)       Rank:Tensor dimension
+
+
+
+Dimension
+Rank
+Name
+Examples
+
+
+
+
+0-D
+0
+scalar
+s=1 2 3
+
+
+1-D
+1
+vector
+v=[1,2,3]
+
+
+2-D
+2
+matrix
+m=[[1,2,3],[4,5,6],[7,8,9]]
+
+
+n-D
+3
+tensor
+t=[[[ …(n)
+
+
+
+
+Addition of vect
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -761,6 +802,8 @@ Tensor,calculation graph,sessionNN based on TENSORFLOW:with tensor to represent 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/F.png" alt="Yin-coco">
             
               <p class="site-author-name" itemprop="name"><span style="opacity:.2;">二向箔</span>DVF</p>
               <p class="site-description motion-element" itemprop="description"></p>
