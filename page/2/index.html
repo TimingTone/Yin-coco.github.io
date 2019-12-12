@@ -355,6 +355,197 @@
   
   <div class="post-date">
 			<div class="post-month">10月</div>
+			<div class="post-day">04</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+          <span itemprop="name">Data Structure</span>
+        </a>
+      </span>
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index">
+          <span itemprop="name">Tree</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/Binary-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yin-coco">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/M.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yin-coco">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/04/Binary-Tree/" itemprop="url">Binary Tree</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T09:04:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/Tree/" itemprop="url" rel="index">
+                    <span itemprop="name">Tree</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Although the title here is BT, we hava to know the definition of Tree first.</p>
+<p><font color="#40E0D0">Vector</font> and <font color="#40E0D0">List</font> belong to linear data structures, but <font colot="#40E0D0">Tree</font> isn’t one kind of linear structure in the strict sense. </p>
+<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h3 id="Rooted-Tree"><a href="#Rooted-Tree" class="headerlink" title="Rooted Tree"></a>Rooted Tree</h3><p>The Tree structure is nothing but a kind of special graph. That is to say, it can be regarded as a set of objects where some pairs of objects are connected by lines. If some of this objects have this relation, then we introduce an <code>edge</code>. Then all the objects that can be defined relation between them will be called <code>vertex</code>. </p>
+<blockquote>
+<p>Vertex is different from the Node we use in computer programming.</p>
+</blockquote>
+<p>The Tree we defined here has following features:</p>
+<ul>
+<li><p>We will assign a special <code>Node</code> as root. This Tree will be called <code>Rooted Tree</code>.</p>
+</li>
+<li><p>By connecting each other, a small <code>rooted tree</code> that can become a larger <code>rooted tree</code> step by step.</p>
+</li>
+<li><p>Compared to this larger tree, every small tree of its parts is called <code>subtree</code>. These subtrees will have a new root <code>r</code>.</p>
+</li>
+</ul>
+<p><img src="/img/subtree.png" alt><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/04/Binary-Tree/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">10月</div>
 			<div class="post-day">03</div>
 	</div>
   
@@ -479,20 +670,16 @@
 
       
         
-          
-          Binary search tree is another milestone of getting deeper understanding of data structures.
-Overviewcall-by-keyConcretely, each of BST data items has its own key code as a feature to distinguish from each other.
-So the first important point is call-by-key, which meets following conditions.
-
-Be able to compare in size with each other
-
-Support equal comparison
-
-
-We might as well assume that data items in the entire data set have been uniformly represented and implemented as a form of Entry.
-We define the following Entry structure:
-12345678910template &lt;typename K, typename V&gt; struct Entry&#123;	K key; V value;	Entry( K k=K(), V v=V()) : key(k), value(v)&#123;&#125;;	Entry( Entry&lt;K, V&gt;const &amp; e) : key(e.key), value(e.value)&#123
-          ...
+          <p>Binary search tree is another <font color="#40E0D0">milestone</font> of getting deeper understanding of data structures.</p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="call-by-key"><a href="#call-by-key" class="headerlink" title="call-by-key"></a>call-by-key</h3><p>Concretely, each of BST data items has its own <font color="#40E0D0">key code</font> as a feature to distinguish from each other.</p>
+<p>So the first important point is <font color="#40E0D0">call-by-key</font>, which meets following conditions.</p>
+<ul>
+<li><p>Be able to compare in size with each other</p>
+</li>
+<li><p>Support equal comparison</p>
+</li>
+</ul>
+<p>We might as well assume that data items in the entire data set have been uniformly represented and implemented as a form of <font color="#40E0D0">Entry</font>.<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/10/03/Binary-Search-Tree/#more" rel="contents">
@@ -502,7 +689,7 @@ We define the following Entry structure:
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -651,49 +838,46 @@ We define the following Entry structure:
 
       
         
-          
-          Tensorflow is a free and open-source software library for dataflow and differentiable programming across a range of tasks.It is a symbolic math library, and is also used for machine learning applications such as neural networks.Firstly,we will build our first neural network and eight strands.
-Tensor,calculation graph,sessionNN based on TENSORFLOW:with tensor to represent data,with calculation graph to build,with session to execute calculation chart,optimize weights(parameters) on the line,and get the model.
-Tensor：Multidimensional Arrays(Lists)       Rank:Tensor dimension
-
-
-
-Dimension
-Rank
-Name
-Examples
-
-
-
-
-0-D
-0
-scalar
-s=1 2 3
-
-
-1-D
-1
-vector
-v=[1,2,3]
-
-
-2-D
-2
-matrix
-m=[[1,2,3],[4,5,6],[7,8,9]]
-
-
-n-D
-3
-tensor
-t=[[[ …(n)
-
-
-
-
-Addition of vect
-          ...
+          <p><a href="https://en.wikipedia.org/wiki/TensorFlow" target="_blank" rel="noopener">Tensorflow</a> is a free and open-source software library for <a href="https://en.wikipedia.org/wiki/Dataflow_programming" target="_blank" rel="noopener">dataflow</a> and <a href="https://en.wikipedia.org/wiki/Differentiable_programming" target="_blank" rel="noopener">differentiable</a> programming across a range of tasks.It is a symbolic math library, and is also used for machine learning applications such as <a href="https://en.wikipedia.org/wiki/Neural_network" target="_blank" rel="noopener">neural networks</a>.Firstly,we will build our first neural network and eight strands.</p>
+<h2 id="Tensor-calculation-graph-session"><a href="#Tensor-calculation-graph-session" class="headerlink" title="Tensor,calculation graph,session"></a>Tensor,calculation graph,session</h2><p>NN based on TENSORFLOW:with tensor to represent data,with calculation graph to build,with session to execute calculation chart,optimize weights(parameters) on the line,and get the model.</p>
+<h3 id="Tensor：Multidimensional-Arrays-Lists-Rank-Tensor-dimension"><a href="#Tensor：Multidimensional-Arrays-Lists-Rank-Tensor-dimension" class="headerlink" title="Tensor：Multidimensional Arrays(Lists)       Rank:Tensor dimension"></a>Tensor：Multidimensional Arrays(Lists)       Rank:Tensor dimension</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Rank</th>
+<th>Name</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-D</td>
+<td>0</td>
+<td>scalar</td>
+<td>s=1 2 3</td>
+</tr>
+<tr>
+<td>1-D</td>
+<td>1</td>
+<td>vector</td>
+<td>v=[1,2,3]</td>
+</tr>
+<tr>
+<td>2-D</td>
+<td>2</td>
+<td>matrix</td>
+<td>m=[[1,2,3],[4,5,6],[7,8,9]]</td>
+</tr>
+<tr>
+<td>n-D</td>
+<td>3</td>
+<td>tensor</td>
+<td>t=[[[ …(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/10/03/Tensorflow/#more" rel="contents">
@@ -854,7 +1038,7 @@ Addition of vect
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -865,7 +1049,7 @@ Addition of vect
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
