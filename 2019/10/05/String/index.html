@@ -451,7 +451,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/10/05/String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/05/String/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/05/String/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -763,9 +763,12 @@ Max\{k | 1<k<j \&\& 'p_1...p_{k-1}' = 'p_{j-k+1}...p_{j-1}'\} & {\text{set is no
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
     </div>
 
   
@@ -773,6 +776,42 @@ Max\{k | 1<k<j \&\& 'p_1...p_{k-1}' = 'p_{j-k+1}...p_{j-1}'\} & {\text{set is no
 
 
 
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/2019/10/05/String/';
+            this.page.identifier = '2019/10/05/String/';
+            this.page.title = 'String';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'http://yoursite.com/2019/10/05/String/';
+                this.page.identifier = '2019/10/05/String/';
+                this.page.title = 'String';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/2019/10/05/String/';
+            this.page.identifier = '2019/10/05/String/';
+            this.page.title = 'String';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://yincoco.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
 
   
 
@@ -788,10 +827,6 @@ Max\{k | 1<k<j \&\& 'p_1...p_{k-1}' = 'p_{j-k+1}...p_{j-1}'\} & {\text{set is no
   
 
 
-
-
-
-  
 
 
 
