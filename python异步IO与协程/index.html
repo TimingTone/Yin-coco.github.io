@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="google-site-verification" content="GsojcF5fwbcvwM0X3hVC4CjWh8Gps8hbzpe8GohWJ5A">
+<meta name="google-site-verification" content="w49Qyh2yADjeTpMUWO5JGaFBygSvziL3Kwz0yDjwigc">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在python高级IO编程中，为了解决多线程的线程间同步，同步编程的并发性太低，以及回调模式编码复杂度高等问题，需要引入异步IO和协程。 异步IO同步与异步 同步： 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。  异步： 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python异步IO与协程">
+<meta property="og:url" content="http://yoursite.com/python异步IO与协程/index.html">
+<meta property="og:site_name" content="Yin-coco">
+<meta property="og:description" content="在python高级IO编程中，为了解决多线程的线程间同步，同步编程的并发性太低，以及回调模式编码复杂度高等问题，需要引入异步IO和协程。 异步IO同步与异步 同步： 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。  异步： 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-19T11:36:19.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python异步IO与协程">
+<meta name="twitter:description" content="在python高级IO编程中，为了解决多线程的线程间同步，同步编程的并发性太低，以及回调模式编码复杂度高等问题，需要引入异步IO和协程。 异步IO同步与异步 同步： 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。  异步： 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '10/1/2019 12:00:00',
+    onlineAPI: '',
+    site: {
+      title: 'Yin-coco',
+      subtitle: '',
+      author: 'Yin-coco'
+    },
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: true,
+      appID: '3OoyOioHljQKAx5YoT0vO2WI-gzGzoHsz',
+      appKey: 'Xr16xnprJ1FOb3ijA2YByAIj'
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/favicon.ico',
+      hidden: '/images/failure.ico',
+      show_text: '(/≧▽≦/)咦！又好了！',
+      hide_text: '(●—●)喔哟，崩溃啦！'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/python异步IO与协程/">
+
+
+
+
+
+  <title>python异步IO与协程 | Yin-coco</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-lab">
+          <a href="/Labs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br>
+            
+            Lab
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-fri">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br>
+            
+            Fri
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/About/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+       <li class="menu-item online">
+	<span id="online-count">
+	<script>document.writeln(Math.ceil(Math.random()*20))</script>
+	</span>人在线
+	</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/header.jpg)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            <span>Y</span><span>i</span><span>n</span><span>-</span><span>c</span><span>o</span><span>c</span><span>o</span>
+          </div>
+          <div id="guide" class="guide">
+            <span>Y</span><span>i</span><span>n</span><span>-</span><span>c</span><span>o</span><span>c</span><span>o</span>
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/M.png" alt="Yin-coco">
+    <h2 class="site-master-description" itemprop="description">
+        
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">12月</div>
+			<div class="post-day">18</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/python/" itemprop="url" rel="index">
+          <span itemprop="name">python</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/python异步IO与协程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yin-coco">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/M.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yin-coco">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">python异步IO与协程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T19:15:00+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">•</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/python异步IO与协程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="python异步IO与协程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/python异步IO与协程/" class="leancloud_visitors" data-flag-title="python异步IO与协程">
+               <span class="post-meta-divider">•</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Heat&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span><span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在python高级IO编程中，为了解决多线程的线程间同步，同步编程的并发性太低，以及回调模式编码复杂度高等问题，需要引入异步IO和协程。</p>
+<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><ul>
+<li><p>同步： 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。</p>
+</li>
+<li><p>异步： 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调用者其返回结果。</p>
+</li>
+</ul>
+<p>同步和异步的区别最大在于异步时调用者不需要等待处理结果，被调用者会通过回调等机制来通知调用者其返回结果。</p>
+<h2 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h2><p>Python对协程的支持是通过generator实现的。</p>
+<p>在generator中，我们不但可以通过<code>for</code>循环来迭代，还可以不断调用<code>next()</code>函数获取由yield语句返回的下一个值。</p>
+<blockquote>
+<p> Python的<code>yield</code>不但可以返回一个值，它还可以接收调用者发出的参数(必须与send配合)。</p>
+</blockquote>
+<a id="more"></a>
+<ol>
+<li>send(None)，其功能类似于next(c)，比如：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">num</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = num()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="literal">None</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="literal">None</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="literal">None</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#9&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    c.send(<span class="literal">None</span>)</span><br><span class="line">StopIteration</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>n = yield r，这里是一条语句，但要理解两个知识点，赋值语句先计算= 右边，由于右边是 yield 语句，所以yield语句执行完以后，进入暂停，而赋值语句在下一次启动生成器的时候首先被执行；</p>
+</li>
+<li><p>send 在接受None参数的情况下，等同于next(generator)的功能，但send同时也可接收其他参数:</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">num</span><span class="params">()</span>:</span></span><br><span class="line">        a = <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">       　<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            a = <span class="keyword">yield</span> a</span><br><span class="line">       </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = num()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="literal">None</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="number">5</span>)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.send(<span class="number">100</span>)</span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，首先使用 c.send(None)，返回生成器的第一个值，a = yield 1 ，也就是1（但此时，并未执行赋值语句），</p>
+<p>接着我们使用了c.send(5)，再次启动生成器，并同时传入了一个参数5，再次启动生成的时候，从上次yield语句断掉的地方开始执行，即 a 的赋值语句，由于我们传入了一个参数5，所以a被赋值为5，接着程序进入whlie循环，当程序执行到 a = yield a，同理，先返回生成器的值 5，下次启动生成器的时候，再执行赋值语句，以此类推…</p>
+<blockquote>
+<p>注意，在一个生成器函数未启动之前，是不能传递值进去。也就是说在使用generator().send(n)之前，必须先使用generator().send(None)或者next(generator)来返回生成器的第一个值。</p>
+</blockquote>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def consumer():</span><br><span class="line">    r = &apos;&apos;</span><br><span class="line">    while True:</span><br><span class="line">        n = yield r</span><br><span class="line">        ＃１．向调用方返回值　２．接收调用方传递的值</span><br><span class="line">        if not n:</span><br><span class="line">            return</span><br><span class="line">        print(&apos;[CONSUMER] Consuming %s...&apos; % n)</span><br><span class="line">        r = &apos;200 OK&apos;</span><br><span class="line"></span><br><span class="line">def produce(c):</span><br><span class="line">    c.send(None) </span><br><span class="line">    n = 0</span><br><span class="line">    while n &lt; 5:</span><br><span class="line">        n = n + 1</span><br><span class="line">        print(&apos;[PRODUCER] Producing %s...&apos; % n)</span><br><span class="line">        r = c.send(n)</span><br><span class="line">        print(&apos;[PRODUCER] Consumer return: %s&apos; % r)</span><br><span class="line">    c.close()</span><br><span class="line"></span><br><span class="line">c = consumer()</span><br><span class="line">produce(c)</span><br></pre></td></tr></table></figure>
+<p>第一步：执行 c.send(None)，启动生成器返回第一个值，n = yield r，此时 r 为空，n 还未赋值，然后生成器暂停，等待下一次启动。</p>
+<p>第二步：生成器返回空值后进入暂停，produce(c) 接着往下运行，进入While循环，此时 n 为1，所以打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PRODUCER] Producing 1...</span><br></pre></td></tr></table></figure></p>
+<p>第三步：produce(c) 往下运行到 r = c.send(1)，再次启动生成器，并传入了参数1，而生成器从上次n的赋值语句开始执行，n 被赋值为1，n存在，if 语句不执行，然后打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[CONSUMER] Consuming 1...</span><br></pre></td></tr></table></figure></p>
+<p>接着r被赋值为’200 OK’，然后又进入循环，执行n = yield r，返回生成器的第二个值，’200 OK’，然后生成器进入暂停，等待下一次启动。</p>
+<p>第四步：生成器返回’200 OK’进入暂停后，produce(c)往下运行，进入r的赋值语句，r被赋值为’200 OK’，接着往下运行，打印：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br></pre></td></tr></table></figure>
+<p>以此类推…</p>
+<p>当n为5跳出循环后，使用c.close() 结束生成器的生命周期，然后程序运行结束。</p>
+<p>完整输出:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[PRODUCER] Producing <span class="number">1.</span>..</span><br><span class="line">[CONSUMER] Consuming <span class="number">1.</span>..</span><br><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br><span class="line">[PRODUCER] Producing <span class="number">2.</span>..</span><br><span class="line">[CONSUMER] Consuming <span class="number">2.</span>..</span><br><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br><span class="line">[PRODUCER] Producing <span class="number">3.</span>..</span><br><span class="line">[CONSUMER] Consuming <span class="number">3.</span>..</span><br><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br><span class="line">[PRODUCER] Producing <span class="number">4.</span>..</span><br><span class="line">[CONSUMER] Consuming <span class="number">4.</span>..</span><br><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br><span class="line">[PRODUCER] Producing <span class="number">5.</span>..</span><br><span class="line">[CONSUMER] Consuming <span class="number">5.</span>..</span><br><span class="line">[PRODUCER] Consumer <span class="keyword">return</span>: <span class="number">200</span> OK</span><br></pre></td></tr></table></figure></p>
+<h2 id="yield-from"><a href="#yield-from" class="headerlink" title="yield from"></a>yield from</h2><p>python3.3新增了yield from语法,其在实现异步IO中尤为重要.</p>
+<p>基本用法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"></span><br><span class="line">my_list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">my_dict = &#123;</span><br><span class="line">	<span class="string">"A"</span>:<span class="string">"http://www.bilibili.com"</span>,</span><br><span class="line">    <span class="string">"B"</span>:<span class="string">"http://www.niconico.com"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_chain</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	<span class="keyword">for</span> my_iterable <span class="keyword">in</span> args:</span><br><span class="line">    	<span class="keyword">yield</span> <span class="keyword">from</span> my_iterable</span><br><span class="line">        <span class="comment">#上句等价于</span></span><br><span class="line">        <span class="comment">#for value in my_iterable:</span></span><br><span class="line">        <span class="comment">#	 yield value</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> my_chain(my_list, my_dict)</span><br><span class="line">	print(value)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>yield from (iterable)其后对象可以为list, dict, generator, 协程.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">g2</span><span class="params">(gen)</span>:</span></span><br><span class="line">	<span class="keyword">yield</span> <span class="keyword">from</span> gen</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	g = g2()</span><br><span class="line">    g.send(<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>main 调用方        g2委托生成器        gen　子生成器</p>
+</li>
+<li><p>yield from 会在调用方和子生成器之间直接建立双向通道, 而非利用g2建立链接的跳板.</p>
+</li>
+</ol>
+<h1 id="协程-Coroutine"><a href="#协程-Coroutine" class="headerlink" title="协程(Coroutine)"></a>协程(Coroutine)</h1><p>python为了将语义变得更加明确,　就引入了<code>async</code>和<code>await</code>关键词用于定义原生的协程.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">downloader</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Yin-coco"</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">download_url</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="comment">#do sth</span></span><br><span class="line">    html = <span class="keyword">await</span> downloader(url)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name = <span class="string">"__main__"</span>:</span><br><span class="line">	coro = download_url(<span class="string">"http://yincoco.com"</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">    	coro.send(<span class="literal">None</span>)</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">    	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用原生的协程不能用next(None)代替.send(None),　只能用.send(None)方式调用.</p>
+</blockquote>
+<p>注意:<code>async</code>定义的函数不能定义<code>yield</code>, <code>await</code>也无法应用于非<code>async</code>定义的函数里, 可应用<code>＠types.coroutine</code>定义非<code>async</code>定义的生成器实现协程.</p>
+<p>这份手工指南的存在是为了向Python新手和专家提供每日最佳实践手册，以介绍Python的安装，配置和使用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Yin-coco WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Yin-coco Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Yin-coco
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/python异步IO与协程/" title="python异步IO与协程">http://yoursite.com/python异步IO与协程/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/python异步IO与协程/';
+            this.page.identifier = 'python异步IO与协程/';
+            this.page.title = 'python异步IO与协程';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'http://yoursite.com/python异步IO与协程/';
+                this.page.identifier = 'python异步IO与协程/';
+                this.page.title = 'python异步IO与协程';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/python异步IO与协程/';
+            this.page.identifier = 'python异步IO与协程/';
+            this.page.title = 'python异步IO与协程';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://yincoco.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/F.png" alt="Yin-coco">
+            
+              <p class="site-author-name" itemprop="name"><span style="opacity:.2;">二向箔</span>DVF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Yin-coco" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Yin-coco" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="/images/qq-g.jpg" target="_blank" title="QQ 群" data-balloon="QQ 群" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/awesomeDIYgod" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.anotherhome.net/3163" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-more"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异步IO"><span class="nav-number">1.</span> <span class="nav-text">异步IO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步与异步"><span class="nav-number">1.1.</span> <span class="nav-text">同步与异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield"><span class="nav-number">1.2.</span> <span class="nav-text">yield</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield-from"><span class="nav-number">1.3.</span> <span class="nav-text">yield from</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程-Coroutine"><span class="nav-number">2.</span> <span class="nav-text">协程(Coroutine)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+         
+
+   
+      <li>
+          <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" title="又拍云联盟">
+   <div style="background:url(/images/upyunlogo2.png); width:250px;height:127px;"> </div> </a>
+      </li>
+  
+ 
+
+<p>博客已极限运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>科学上网才能评论呦~~</p>
+
+<p>© <span itemprop="copyrightYear">2019</span> Yin-coco.
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">Yin-coco</span>. </p>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 22342,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = false;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+</body>
+</html>
